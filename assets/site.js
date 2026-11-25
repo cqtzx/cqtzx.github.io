@@ -1,12 +1,10 @@
-import { size, sample } from './signal-data.mjs';
-
 const settings = document.documentElement;
 const theme = document.querySelector('.theme');
 const systemTheme = matchMedia('(prefers-color-scheme: dark)');
 
 function updateThemeButton() {
   const dark = settings.dataset.theme === 'dark' || (!settings.dataset.theme && systemTheme.matches);
-  const label = dark ? '切换浅色模式' : '切换深色模式';
+  const label = dark ? 'Switch to light mode' : 'Switch to dark mode';
   theme.setAttribute('aria-label', label);
   theme.title = label;
   theme.firstElementChild.textContent = dark ? '☀' : '☾';
@@ -47,7 +45,8 @@ if (filters) {
     papers.forEach((paper) => {
       paper.hidden = active.dataset.year !== 'all' && active.dataset.year !== paper.dataset.year;
     });
-    status.textContent = '显示 ' + papers.filter((paper) => !paper.hidden).length + ' 篇论文';
+    const count = papers.filter((paper) => !paper.hidden).length;
+    status.textContent = count + (count === 1 ? ' publication shown' : ' publications shown');
   });
 }
 
@@ -67,7 +66,7 @@ document.querySelectorAll('.bib-copy').forEach((button) => {
       if (!entry) throw new Error('Citation unavailable');
       try {
         await navigator.clipboard.writeText(entry + '\n');
-        button.textContent = '已复制';
+        button.textContent = 'Copied';
       } catch {
         const link = document.createElement('a');
         const url = URL.createObjectURL(new Blob([entry + '\n'], { type: 'text/plain' }));
@@ -75,59 +74,13 @@ document.querySelectorAll('.bib-copy').forEach((button) => {
         link.download = key + '.bib';
         link.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
-        button.textContent = '已下载';
+        button.textContent = 'Downloaded';
       }
     } catch {
-      button.textContent = '请重试';
+      button.textContent = 'Try again';
     }
     document.querySelector('.status').textContent = button.textContent + ' · BibTeX';
     clearTimeout(reset);
     reset = setTimeout(() => { button.textContent = 'BibTeX'; }, 1800);
   });
 });
-
-const canvas = document.querySelector('#signal');
-if (canvas) {
-  const context = canvas.getContext('2d');
-  const project = (x, y, z) => [450 + 179 * x - 175 * y, 241 + 64 * x + 79 * y - 169 * z];
-  const points = Array.from({ length: size }, (_, row) =>
-    Array.from({ length: size }, (_, column) => sample(row, column))
-  );
-
-  function line(coordinates, color, width) {
-    context.beginPath();
-    coordinates.forEach((point, index) => {
-      if (index === 0) context.moveTo(...point);
-      else context.lineTo(...point);
-    });
-    context.strokeStyle = color;
-    context.lineWidth = width;
-    context.stroke();
-  }
-
-  for (let index = 0; index <= 12; index += 1) {
-    const edge = -1 + index / 6;
-    line([project(edge, -1, -.52), project(edge, 1, -.52)], '#50618a53', 1);
-    line([project(-1, edge, -.52), project(1, edge, -.52)], '#50618a53', 1);
-  }
-
-  for (let index = 0; index < size; index += 1) {
-    const weight = index % 4 === 0 ? 1.9 : 1;
-    const first = points[index].map(({ x, y, signal }) => project(x, y, signal));
-    const second = points.map((row) => {
-      const { x, y, signal } = row[index];
-      return project(x, y, signal);
-    });
-    line(first, index % 4 === 0 ? '#9eb6ffdb' : '#7598f282', weight);
-    line(second, index % 4 === 0 ? '#88a8ffd0' : '#82a7ff7b', weight);
-  }
-
-  points.flat().filter((point) => point.outlier).forEach(({ x, y, signal, observation }) => {
-    const [left, top] = project(x, y, observation);
-    line([project(x, y, signal), [left, top]], '#fab98e78', 1.3);
-    context.beginPath();
-    context.arc(left, top, 4.15, 0, Math.PI * 2);
-    context.fillStyle = '#ffc69c';
-    context.fill();
-  });
-}

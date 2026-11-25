@@ -1,7 +1,7 @@
-title: "谭作洵 · Zuoxun Tan"
+title: "Zuoxun Tan"
 author: "Zuoxun Tan"
-description: "谭作洵的学术主页，包含发表论文、研究方向、研究笔记与基准数据。"
-lang: zh-CN
+description: "Zuoxun Tan's academic homepage with publications, research interests, notes, and benchmark datasets."
+lang: en
 url: ""
 baseurl: ""
 permalink: /notes/:title/

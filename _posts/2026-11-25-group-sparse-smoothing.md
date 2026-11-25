@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 组稀疏与组内平滑
-description: 用两类惩罚分别描述哪些变量组应进入模型，以及组内系数怎样变化。
+title: Group Sparsity and Within-Group Smoothing
+description: How two penalties determine which groups enter the model and how their coefficients vary.
 permalink: /notes/group-sparse-smoothing/
 paper_url: https://doi.org/10.1007/s11222-024-10438-0
 ---
 
-组稀疏惩罚决定哪些变量组进入模型，组内总变差控制同组变量之间的变化。
+A group sparsity penalty selects which groups of variables enter the model. A within-group total variation penalty controls how coefficients vary within each group.
 
-在已知真实信号的统计仿真中，可以分别评估组选择与信号恢复的准确性。
+Simulations with a known ground-truth signal let us assess group selection and signal recovery independently.
