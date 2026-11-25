@@ -7,9 +7,9 @@ hero: true
   <div class="section-heading">
     <h2 id="pub-heading">Publications</h2>
     <div class="filters" aria-label="Filter by publication year" role="group" hidden>
-      <button type="button" class="selected" data-year="all" aria-pressed="true">All</button>
+      <button type="button" class="button selected" data-year="all" aria-pressed="true">All</button>
       {% assign years = site.data.publications | map: 'year' | uniq %}
-      {% for year in years %}<button type="button" data-year="{{ year }}" aria-pressed="false">{{ year }}</button>{% endfor %}
+      {% for year in years %}<button type="button" class="button" data-year="{{ year }}" aria-pressed="false">{{ year }}</button>{% endfor %}
     </div>
   </div>
   <p class="status sr-only" role="status"></p>
@@ -23,15 +23,15 @@ hero: true
         <p class="paper-authors"><strong>Zuoxun Tan</strong>, Hu Yang</p>
         <details><summary>Summary</summary><p>{{ paper.summary | escape }}</p></details>
         <div class="paper-links">
-          <a class="outline" href="https://doi.org/{{ paper.doi }}">DOI <span aria-hidden="true">↗</span></a>
-          {% if paper.code %}<a class="outline" href="{{ paper.code }}">Code <span aria-hidden="true">↗</span></a>{% endif %}
-          <button class="outline bib-copy" data-key="{{ paper.key }}" type="button" hidden>BibTeX</button>
+          <a class="button" href="https://doi.org/{{ paper.doi }}">DOI <span aria-hidden="true">↗</span></a>
+          {% if paper.code %}<a class="button" href="{{ paper.code }}">Code <span aria-hidden="true">↗</span></a>{% endif %}
+          <button class="button bib-copy" data-key="{{ paper.key }}" type="button" hidden>BibTeX</button>
         </div>
       </div>
     </article>
     {% endfor %}
   </div>
-  <a class="text-link all-citations" href="{{ '/publications.bib' | relative_url }}" download>Download all BibTeX entries <span aria-hidden="true">↓</span></a>
+  <a class="button all-citations" href="{{ '/publications.bib' | relative_url }}" download>Download all BibTeX entries <span aria-hidden="true">↓</span></a>
 </section>
 
 <section class="surface home-card" id="research" aria-labelledby="research-heading">
