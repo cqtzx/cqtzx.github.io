@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+<header class="page-head">
+  <p class="eyebrow" lang="en">Research note</p>
+  <h1>{{ page.title | escape }}</h1>
+  <p>{{ page.description | escape }}</p>
+</header>
+
+<article class="surface prose">
+  {{ content }}
+  {% if page.paper_url %}
+  <p><a class="text-link" href="{{ page.paper_url }}">查看原论文 <span aria-hidden="true">↗</span></a></p>
+  {% endif %}
+</article>
+
+<p><a class="text-link" href="{{ '/notes/' | relative_url }}">← 返回论文阅读笔记</a></p>

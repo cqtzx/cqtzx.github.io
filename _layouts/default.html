@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'zh-CN' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <title>{% if page.title and page.url != '/' %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <script src="{{ '/assets/site.js' | relative_url }}" type="module"></script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">跳到主要内容</a>
+  <header class="header">
+    <div class="shell header-inner">
+      <a class="brand" href="{{ '/' | relative_url }}"><span class="brand-mark" aria-hidden="true">ZT</span><span lang="en">Zuoxun Tan</span></a>
+      <nav aria-label="主导航">
+        <a href="{{ '/' | relative_url }}">首页</a>
+        <a href="{{ '/#publications' | relative_url }}">论文</a>
+        <a href="{{ '/notes/' | relative_url }}">笔记</a>
+        <a href="{{ '/#about' | relative_url }}">关于</a>
+      </nav>
+      <button class="theme" type="button" aria-label="切换深色模式" title="切换深色模式" hidden><span aria-hidden="true">☾</span></button>
+    </div>
+  </header>
+  {% if page.hero %}{% include intro.html %}{% endif %}
+  <div class="shell page-frame">
+    <main class="content" id="main">
+      {{ content }}
+    </main>
+    {% include sidebar.html %}
+  </div>
+  <footer class="footer"><div class="shell footer-inner"><span>谭作洵 <span lang="en">· Zuoxun Tan</span></span><a href="#top">返回顶部 <span aria-hidden="true">↑</span></a></div></footer>
+</body>
+</html>

@@ -1,0 +1,23 @@
+---
+layout: default
+title: 论文阅读笔记
+description: 关于低秩图像去噪、组稀疏建模和稳健二维主成分分析的笔记。
+permalink: /notes/
+---
+
+<header class="page-head">
+  <p class="eyebrow" lang="en">Research notes</p>
+  <h1>{{ page.title | escape }}</h1>
+  <p>从数据结构、模型约束和评估指标读论文。</p>
+</header>
+
+<section class="surface" aria-label="笔记列表">
+  <ul class="entry-list">
+    {% for post in site.posts %}
+    <li>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+      <p>{{ post.description | escape }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

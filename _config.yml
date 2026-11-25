@@ -1,0 +1,14 @@
+title: "谭作洵 · Zuoxun Tan"
+author: "Zuoxun Tan"
+description: "谭作洵的学术主页，包含发表论文、研究方向、研究笔记与基准数据。"
+lang: zh-CN
+url: ""
+baseurl: ""
+permalink: /notes/:title/
+markdown: kramdown
+timezone: Asia/Shanghai
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

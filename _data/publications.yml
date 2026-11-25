@@ -1,0 +1,31 @@
+- key: tan2026jccfl
+  year: 2026
+  title: "Enhanced unsupervised domain adaptation through joint constrained classifier and feature learning"
+  journal: "Engineering Applications of Artificial Intelligence"
+  volume: "163 · 113047"
+  doi: 10.1016/j.engappai.2025.113047
+  code: https://github.com/cqtzx/JCCFL
+  summary: "联合学习分类器和判别特征，在目标域缺少标签时对齐分布并保留数据的局部结构。"
+- key: tan2025ra2dpca
+  year: 2025
+  title: "Reweighted angle two-dimensional principal component analysis for feature extraction"
+  journal: "Pattern Recognition"
+  volume: "168 · 111817"
+  doi: 10.1016/j.patcog.2025.111817
+  code: https://github.com/cqtzx/RA2DPCA
+  summary: "在二维主成分分析中引入重加权损失，并优化中心矩阵，以降低离群点和遮挡对图像特征提取的影响。"
+- key: tan2024group
+  year: 2024
+  title: "Group sparse structural smoothing recovery: model, statistical properties and algorithm"
+  journal: "Statistics and Computing"
+  volume: "34 · 122"
+  doi: 10.1007/s11222-024-10438-0
+  summary: "结合非凸组稀疏惩罚与组内总变差，建模变量的组结构和平滑性，并分析恢复误差界与算法收敛性。"
+- key: tan2023denoising
+  year: 2023
+  title: "Total variation regularized multi-matrices weighted Schatten p-norm minimization for image denoising"
+  journal: "Applied Mathematical Modelling"
+  volume: "124 · 518–531"
+  doi: 10.1016/j.apm.2023.08.002
+  code: https://github.com/cqtzx/MWSMTVp
+  summary: "将加权 Schatten p 范数与总变差结合，在多矩阵去噪中同时利用全局低秩结构和局部空间信息。"
